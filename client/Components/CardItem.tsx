@@ -1,7 +1,19 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 
-const CardItem = () => {
+interface ICardItem {
+	title: string;
+	subtitle: string;
+	createdAt: string;
+	image?: string;
+}
+
+const CardItem: React.FC<ICardItem> = ({
+	title,
+	subtitle,
+	createdAt,
+	image,
+}) => {
 	return (
 		<Card className={`fj-card`}>
 			<div className="card-body-wrapper">
@@ -17,18 +29,15 @@ const CardItem = () => {
 						<Card.Title className="font-weight-bold mb-1">
 							Placeholder Author
 						</Card.Title>
-						<Card.Text className="card-date">Placeholder Date</Card.Text>
+						<Card.Text className="card-date">{createdAt}</Card.Text>
 					</div>
 				</Card.Header>
 				<div className="view overlay">
-					<Card.Img
-						src="https://via.placeholder.com/250"
-						alt="Card image cap"
-					/>
+					<Card.Img src={image} alt="Card image cap" />
 				</div>
 				<Card.Body>
-					<Card.Title className="card-main-title">Placeholder Title</Card.Title>
-					<Card.Text>Placehodler Subtitle</Card.Text>
+					<Card.Title className="card-main-title">{title}</Card.Title>
+					<Card.Text>{subtitle}</Card.Text>
 				</Card.Body>
 			</div>
 			<a className="card-button">Read More</a>
